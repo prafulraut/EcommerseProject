@@ -41,7 +41,6 @@ export class EcomdataComponent implements OnInit {
   
   constructor(private fb: FormBuilder) {
     console.log(this.products);
-    // this.filteredUsers = [...this.products]
     this.myForm = this.fb.group({
       filterProduct: ['']
     })

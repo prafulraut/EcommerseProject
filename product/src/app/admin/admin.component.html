@@ -1,74 +1,103 @@
- <!-- Button to Open the Modal -->
- <div class="text-right">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-        Add Product
-    </button>
-</div>
-<!-- <button type="submit">Add Item</button> -->
-<div class="row">
-<div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+<div class="container-fluid">
+    <div class="text-right">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Add Product
+        </button>
+        
+    </div>
+    <div class="row">
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Add Product</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                <form action="" #regform="ngForm" (ngSubmit)="onSubmit(regform)">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label for="">Title</label>
-                            <br>
-                            <input type="text" class="form-control" placeholder="" name="title" ngModel>
-                            <label for="">price</label>
-                            <br>
-                            <input type="text" class="form-control" placeholder="" name="price" ngModel>
-                            <label for="">category</label>
-                            <br>
-                            <input type="text" class="form-control" placeholder="" name="category" ngModel>
-                            
-                        </div>
-                        <div class="col-lg-6">
-                            <label for="">description</label>
-                            <br>
-                            <textarea name="description" id="" cols="40" rows="10" ngModel></textarea>
-                           
-                            <div class="mt-4">
-                                <button type="button"
-                                    class="btn btn-outline-primary ml-4 btn-lg">Discard</button>
-                                <button type="submit" class="btn btn-primary ml-4 btn-lg" [disabled]="!regform.valid">Submit</button>
-                            </div>
-                        </div>
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add Product</h4>
+                        <button type="button" #closebutton class="close" data-dismiss="modal">&times;</button>
                     </div>
-                 </form>
+
+                    <div class="modal-body">
+                        <form action="" #regform="ngForm" (ngSubmit)="onSubmit(regform)">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label for="">Title</label>
+                                    <br>
+                                    <input type="text" class="form-control" placeholder="" name="title" ngModel>
+                                    <label for="">price</label>
+                                    <br>
+                                    <input type="text" class="form-control" placeholder="" name="price" ngModel>
+                                    <label for="">category</label>
+                                    <br>
+                                    <input type="text" class="form-control" placeholder="" name="category" ngModel>
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="">Image</label>
+                                    <br>
+                                    <input type="file" class="form-control" placeholder="" name="url"
+                                        (change)="onSelectFile($event)" ngModel>
+
+                                    <label for="">description</label>
+                                    <br>
+                                    <textarea name="description" id="" cols="30" rows="10" ngModel></textarea>
+
+                                    <div class="mt-4">
+                                        <button type="button"
+                                            class="btn btn-outline-primary ml-4 btn-lg">Discard</button>
+                                        <button type="submit" class="btn btn-primary ml-4 btn-lg"
+                                            [disabled]="!regform.valid" >Submit</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-</div>
-<div *ngFor="let data of products; let i = index;"class="container-fluid">
-    <div class="row">
-        <div class="col-lg-1 mt-5">
-            <h3>{{data.id}}</h3>
-        </div>
-        <div class="col-lg-4" [className]="'images'">
-            <img [src]="data.image" [alt]="data.id" height="250" width="200">
-        </div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-6 mt-5">
-            <div [className]="'discription'">
-                <h2>{{data.title}}</h2>
-                <h3 [ngStyle]="{color:'red'}">{{data.price}}</h3>
-                <p>{{data.description}}</p>
-                <h4>{{data.category}}</h4>
-                <h4>{{data.rating.rate}}</h4>
-                <h4>{{data.rating.count}}</h4>
-                <button type="submit" (click)="deleteProduct(i)">delete Item</button>
+    <div *ngFor="let data of products; let i = index;">
+        <div class="row">
+            <div class="col-lg-1 mt-5">
+                <!-- <h3>{{data.id}}</h3> -->
+            </div>
+            <div class="col-lg-4" [className]="'images'">
+                <img [src]="data.image" [alt]="data.id" height="250" width="200">
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-6 mt-5">
+                <div [className]="'discription'">
+                    <h2>{{data.title}}</h2>
+                    <h3 [ngStyle]="{color:'red'}">{{data.price}}</h3>
+                    <p>{{data.description}}</p>
+                    <h4>{{data.category}}</h4>
+                    <h4>{{data.rating.rate}}</h4>
+                    <h4>{{data.rating.count}}</h4>
+                    <button type="submit" (click)="deleteProduct(i)">delete Item</button>
+                </div>
             </div>
         </div>
-    </div> <hr>
+        <hr>
+    </div>
+    <div *ngFor="let list of productAdd ; let i = index;">
+        <div class="row">
+            <div class="col-lg-1 mt-5">
+            </div>
+            <div class="col-lg-4" [className]="'images'">
+                <img [src]="url" [alt]="list.id" height="250" width="200">
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-6 mt-5">
+                <div [className]="'discription'">
+                    <h2>{{list.title}}</h2>
+                    <h3 [ngStyle]="{color:'red'}">{{list.price}}</h3>
+                    <p>{{list.description}}</p>
+                    <h4>{{list.category}}</h4>
+                    <h4>{{list.rating.rate}}</h4>
+                    <h4>{{list.rating.count}}</h4>
+                    <button type="submit" (click)="deleteProduct(i)">delete Item</button>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
 </div>

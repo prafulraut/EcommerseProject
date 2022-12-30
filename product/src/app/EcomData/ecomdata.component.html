@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div style="float:right">
   <form [formGroup]="myForm">
-    <h5>filter Price</h5>
+    <h5>filter by Price</h5>
     <br>
     <select name="Price" formControlName="filterProduct">
       <option *ngFor="let k of PriceFilter; let i = index;" [ngValue]="getValue(i)" value="">

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import * as jsondata from "../../assets/jsonData/ecommerceProduct.json"
 @Component({
   selector: 'app-admin',
@@ -7,21 +7,42 @@ import * as jsondata from "../../assets/jsonData/ecommerceProduct.json"
 })
 export class AdminComponent {
   products = (jsondata as any).default;
+  productsId = [...this.products]
   formValue: any;
+  productAdd: any[] = [];
+  @ViewChild('closebutton') closebutton: any;
+
   constructor() {
     console.log(this.products);
-    
-   }
-   deleteProduct(i:any){
-    this.products.splice(i,1)
-   }
+
+  }
+  deleteProduct(i: any) {
+    this.products.splice(i, 1)
+    this.productAdd.splice(i, 1)
+  }
 
   ngOnInit(): void {
+    console.log(this.products);
+
   }
   onSubmit(data: any) {
-    this.formValue=data.form.value
+    this.formValue = data.form.value
     console.log(this.formValue);
-    // this.contactService.postContact(this.formValue).subscribe((res)=> {
-    //   console.log(res);
+    this.productAdd.push(this.formValue)
+    this.closebutton.nativeElement.click();
+  }
+  url = '';
+  onSelectFile(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]);
+
+      reader.onload = (event: any) => {
+        console.log(event);
+        this.url = event.target.result;
+      }
     }
+  }
+
 }
