@@ -1,0 +1,22 @@
+<button type="submit">Add Item</button>
+<div *ngFor="let data of products" class="container-fluid">
+    <div class="row">
+        <div class="col-lg-1 mt-5">
+            <h3>{{data.id}}</h3>
+        </div>
+        <div class="col-lg-4" [className]="'images'">
+            <img [src]="data.image" [alt]="data.id" height="250" width="200">
+        </div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-6 mt-5">
+            <div [className]="'discription'">
+                <h2>{{data.title}}</h2>
+                <h3 [ngStyle]="{color:'red'}">{{data.price}}</h3>
+                <p>{{data.description}}</p>
+                <h4>{{data.category}}</h4>
+                <h4>{{data.rating.rate}}</h4>
+                <h4>{{data.rating.count}}</h4>
+            </div>
+        </div>
+    </div> <hr>
+</div>

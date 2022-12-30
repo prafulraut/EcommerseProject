@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div style="float:right">
+  <form [formGroup]="myForm">
+    <h5>filter Price</h5>
+    <br>
+    <select name="Price" formControlName="filterProduct">
+      <option *ngFor="let k of PriceFilter; let i = index;" [ngValue]="getValue(i)" value="">
+        {{ getValue(i).displayText }}
+      </option>
+    </select>
+  </form>
+</div>
+
+  <div>
+    <div *ngFor="let product of filteredProducts ">
+      <div class="row">
+        <div class="col-lg-1 mt-5">
+          <h3>{{product.id}}</h3>
+        </div>
+        <div class="col-lg-4" [className]="'images'">
+          <img [src]="product.image" [alt]="product.id" height="250" width="200">
+        </div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-6 mt-5">
+          <div [className]="'discription'">
+            <h2>{{product.title}}</h2>
+            <h3 [ngStyle]="{color:'red'}">{{product.price}}</h3>
+            <p>{{product.description}}</p>
+            <h4>{{product.category}}</h4>
+            <h4>{{product.rating.rate}}</h4>
+            <h4>{{product.rating.count}}</h4>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>
