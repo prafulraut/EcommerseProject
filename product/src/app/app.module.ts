@@ -4,14 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EcomdataComponent } from './EcomData/ecomdata.component';
-import { AdminComponent } from './admin/admin.component';
+import { HomePageComponent } from './home-page/home-page.component';
 // import { EcomdataModule } from './EcomData/ecomdata.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminComponent,
+    HomePageComponent,
     // HomeComponent,
     // EcomdataComponent
   ],
